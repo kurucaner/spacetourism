@@ -1,39 +1,27 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import {
-  Header,
-  Home,
-  Destination,
-  Crew,
-  Technology,
-  Error,
-} from "./components"
+// Hooks
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
+// Components
+import { Header } from "./components/";
+import Home from "./components/Home";
+import Crew from "./pages/Crew";
+import Destination from "./pages/Destination";
+import Technology from "./pages/Technology";
+
+const App = () => {
   return (
     <Router>
-      <main>
-        <Header />
+      <Header />
 
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/destination">
-            <Destination />
-          </Route>
-          <Route path="/crew">
-            <Crew />
-          </Route>
-          <Route path="/technology">
-            <Technology />
-          </Route>
-          <Route path="*">
-            <Error />
-          </Route>
-        </Switch>
-      </main>
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/destination" element={<Destination />} />
+        <Route path="/crew" element={<Crew />} />
+        <Route path="/technology" element={<Technology />} />
+      </Routes>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

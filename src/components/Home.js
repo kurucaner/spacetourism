@@ -1,29 +1,35 @@
-export default function Home() {
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Home = () => {
   return (
     <>
-      <section className="home">
-        <div className="overlay p-10">
-          <article className="text-center md:text-left">
-            <h1 className="text-gray-400 text-xl uppercase">
-              So, you want to travel to{" "}
-              <span className="block font-semibold tracking-widest text-4xl text-white md:text-5xl lg:text-6xl 2xl:text-7xl mb-10 mt-3">
-                space
+      <section className="home px-5">
+        <div className="overlay">
+          <article className="lg:w-1/2 lg:mr-20">
+            <h1 className="text-2xl text-gray-400">
+              SO, YOU TO TRAVEL TO{" "}
+              <span className="block text-4xl lg:text-6xl text-white mt-5 mb-10">
+                SPACE
               </span>
             </h1>
-            <p className="text-gray-400 md:w-11/12 lg:w-1/2">
+            <p className="text-gray-400">
               Let's face it; if you want to go to space, you might as well
               genuinely go to outer space and not hover kind of on the edge of
               it. Well, sit back, and relax because we'll give you a truly out
               of this world experience!
             </p>
           </article>
-          <article>
-            <button className="bg-white text-gray-900 font-bold uppercase text-2xl w-40 h-40 rounded-full shadow xl:h-52 xl:w-52 xl:text-4xl animate-pulse mt-10 md:mt-0">
-              Explore
+
+          <article className="mt-20">
+            <button className="w-48 h-48 rounded-full bg-white text-gray-800 uppercase font-bold text-4xl lg:text-5xl animate-pulse">
+              <Link to="/destination">Explore</Link>
             </button>
           </article>
         </div>
       </section>
     </>
-  )
-}
+  );
+};
+
+export default Home;

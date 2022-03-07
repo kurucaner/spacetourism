@@ -1,11 +1,11 @@
-import { useState } from "react"
-import data from "../starter-code/data.json"
+import { useState } from "react";
+import data from "../starter-code/data.json";
 
 export default function Technology() {
-  const [technology] = useState(data.technology)
-  const [value, setValue] = useState(0)
+  const [technology] = useState(data.technology);
+  const [value, setValue] = useState(0);
 
-  const { name, images, description } = technology[value]
+  const { name, images, description } = technology[value];
 
   return (
     <>
@@ -50,18 +50,17 @@ export default function Technology() {
                 <p className="text-white pb-5">{description}</p>
               </article>
             </div>
-          </article>
-
-          <article className="pb-10 md:pb-0">
-            <img
-              src={images.portrait}
-              alt={name}
-              title={name}
-              className="xl:absolute right-0 bottom-20 block mx-auto"
-            />
+            <article className="pb-10 md:pb-0">
+              <img
+                src={images.landscape}
+                alt={name}
+                title={name}
+                className="xl:absolute right-0 bottom-20 block mx-auto"
+              />
+            </article>
           </article>
         </div>
       </section>
     </>
-  )
+  );
 }

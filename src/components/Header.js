@@ -1,72 +1,62 @@
-import { NavLink } from "react-router-dom"
-import { FiMenu } from "react-icons/fi"
-import logo from "../starter-code/assets/shared/logo.svg"
+// Hooks
+import React from "react";
+import { Link } from "react-router-dom";
+// Assets
+import logo from "../starter-code/assets/shared/logo.svg";
+import { CgMenuLeft } from "react-icons/cg";
 
-export default function Header() {
+const Header = () => {
   const handleClick = () => {
-    const navbar = document.getElementById("navbar")
+    const navbar = document.querySelector(".navbar");
+    const listItems = document.querySelectorAll(".list-item");
 
-    navbar.classList.toggle("open")
-  }
+    navbar.classList.toggle("open");
 
+    listItems.forEach((item) =>
+      item.addEventListener("click", () => navbar.classList.remove("open"))
+    );
+  };
   return (
     <>
-      <header className="header px-5 flex items-center justify-between">
-        <div className="py-5">
-          <NavLink to="/">
-            <img src={logo} alt="space" title="Travel to Space" />
-          </NavLink>
+      <header className="header flex items-center justify-between w-full lg:flex-row">
+        <div>
+          <Link to="/">
+            <img src={logo} alt="Space Tourism" title="Space Tourism"></img>
+          </Link>
         </div>
 
-        {/* {isOpen && ( */}
-        <nav id="navbar">
-          <ul className="flex items-center">
-            <li className="mx-2 py-5 text-gray-400 font-semibold">
-              <NavLink
-                to="/"
-                exact
-                activeClassName="text-white border-b-4 border-white pb-7"
-              >
-                <span>00</span> Home
-              </NavLink>
+        <nav className="navbar">
+          <ul>
+            <li className="list-item">
+              <Link to="/" className="lg:text-white lg:flex lg:items-center">
+                <span className="lg:text-4xl lg:font-bold mr-2">00</span> Home
+              </Link>
             </li>
-            <li className="mx-2 py-5 text-gray-400 font-semibold">
-              <NavLink
-                to="/destination"
-                exact
-                activeClassName="text-white border-b-4 border-white pb-7"
-              >
-                <span>01</span> Destination
-              </NavLink>
+            <li className="list-item">
+              <Link to="/destination" className="lg:text-white lg:flex lg:items-center">
+                <span className="lg:text-4xl lg:font-bold mr-2">01</span>Destination
+              </Link>
             </li>
-            <li className="mx-2 py-5 text-gray-400 font-semibold">
-              <NavLink
-                to="/crew"
-                exact
-                activeClassName="text-white border-b-4 border-white pb-7"
-              >
-                <span>02</span> Crew
-              </NavLink>
+            <li className="list-item">
+              <Link to="/crew" className="lg:text-white lg:flex lg:items-center">
+                <span className="lg:text-4xl lg:font-bold mr-2">02</span>Crew
+              </Link>
             </li>
-            <li className="mx-2 py-5 text-gray-400 font-semibold">
-              <NavLink
-                to="/technology"
-                exact
-                activeClassName="text-white border-b-4 border-white pb-7"
-              >
-                <span>03</span> Technology
-              </NavLink>
+            <li className="list-item">
+              <Link to="/technology" className="lg:text-white lg:flex lg:items-center">
+                <span className="lg:text-4xl lg:font-bold mr-2">03</span>Technology
+              </Link>
             </li>
           </ul>
         </nav>
-        {/* )} */}
-
-        <div className="menu">
-          <button id="menu" onClick={handleClick}>
-            <FiMenu className="text-white text-4xl" />
+        <div className="lg:hidden">
+          <button onClick={handleClick}>
+            <CgMenuLeft className="text-white text-4xl" />
           </button>
         </div>
       </header>
     </>
-  )
-}
+  );
+};
+
+export default Header;
